@@ -14,8 +14,30 @@
 </head>
 
 <body>
+    <style>
+        .hero-section {
+      background: url("https://static.pexels.com/photos/248064/pexels-photo-248064.jpeg") 50% no-repeat;
+      background-size: cover;
+      height: 60vh;
+      text-align: center;
+      display: -webkit-flex;
+      display: -ms-flexbox;
+      display: flex;
+      -webkit-align-items: center;
+          -ms-flex-align: center;
+              align-items: center;
+      -webkit-justify-content: center;
+          -ms-flex-pack: center;
+              justify-content: center;
+    }
+    
+    .hero-section .hero-section-text {
+      color: #fefefe;
+      text-shadow: 1px 1px 2px #0a0a0a;
+    }
+    </style>
     <div class="hero-section">
-        <div class="hero-section">
+        <div class="hero-section-text">
             <h1 class="text-center">Best Restaurant</h1>
             <h5 class="text-center">Get in before we're at Capacity!</h5>
             <div class="button-group align-center">
@@ -31,15 +53,20 @@
             <div class="cell text-center">
                 <h2>Here are the reservations for tonight!</h2>
             </div>
-            <div class="cell" id="reservation-cards">
+            <div class="cell">
+                <div class="grid-x align-center" id="reservation-cards">
 
+                </div>
             </div>
         </section>
         <section class="grid-x grid-padding-x">
             <div class="cell text-center">
                 <h2>Here is the wait list!</h2>
             </div>
-            <div class="cell" id="waitlist-cards">
+            <div class="cell" >
+                <div class="grid-x align-center" id="waitlist-cards">
+
+                </div>
             </div>
         </section>
     </main>
@@ -56,11 +83,11 @@
         console.log('doing smth')
         $.get('/api/reservations', (data) => {
             console.log(data)
-            if (data) {
+            if (data.length>0) {
                 data.forEach((element, index) => {
                     const target = $('#reservation-cards')
 
-                    let card = $('<div class="card" style="width: 300px;">')
+                    let card = $('<div class="radius bordered shadow card" style="width: auto; margin: 10px;">')
                     let newCard = $('<div class="card-divider">')
                     card.append(newCard)
                     let heading = $('<h3>')
@@ -76,17 +103,18 @@
                     target.append(card)
                 });
             } else {
-
+                const target = $('#reservation-cards')
+                target.append($('<h4>').text(`No reservations yet, go for it, make a reservation!`))
             }
         })
 
         $.get('/api/waitlist', (data) => {
             console.log(data)
-            if (data) {
+            if (data.length >0) {
                 data.forEach((element, index) => {
                     const target = $('#waitlist-cards')
 
-                    let card = $('<div class="card" style="width: 300px;">')
+                    let card = $('<div class="radius bordered shadow card" style="width: auto; margin: 10px;">')
                     let newCard = $('<div class="card-divider">')
                     card.append(newCard)
                     let heading = $('<h3>')
@@ -102,7 +130,8 @@
                     target.append(card)
                 });
             } else {
-
+                const target = $('#waitlist-cards')
+                target.append($('<h4>').text(`No one on the waitlist yet, go for it, make a reservation!`))
             }
         })
 
