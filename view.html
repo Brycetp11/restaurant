@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css"
+        integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+
+    <title>Restaurrant</title>
+
+</head>
+
+<body>
+    <div class="hero-section">
+        <div class="hero-section">
+            <h1 class="text-center">Best Restaurant</h1>
+            <h5 class="text-center">Get in before we're at Capacity!</h5>
+            <div class="button-group align-center">
+                <a class="button" href="/"> Home</a>
+                <a class="button" href="/add">Make a reservation</a>
+            </div>
+        </div>
+    </div>
+
+    <main class="grid-container fluid">
+
+        <section class="grid-x grid-padding-x">
+            <div class="cell text-center">
+                <h2>Here are the reservations for tonight!</h2>
+            </div>
+            <div class="cell" id="reservation-cards">
+                
+            </div>
+        </section>
+        <section class="grid-x grid-padding-x">
+            <div class="cell text-center">
+                <h2>Here is the wait list!</h2>
+            </div>
+            <div class="cell">
+                <div class="card" style="width: 300px;">
+                    <div class="card-divider">
+                        <h3>Position <span id="table-num">1</span></h3>
+                    </div>
+                    <div class="card-section">
+                        <div class="grid-x">
+                            <div class="cell">
+                                <h4 id="name">Customer Name</h4>
+                            </div>
+                            <div class="cell-4">
+                                <div class="grid-x">
+                                    <div class="cell">
+                                        <p>Phone</p>
+                                    </div>
+                                    <div class="cell">
+                                        <p>Email</p>
+                                    </div>
+                                    <div class="cell">
+                                        <p>ID</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div class="cell-8">
+                                <div class="grid-x">
+                                    <div class="cell">
+                                        <p id="phone">Phone</p>
+                                    </div>
+                                    <div class="cell">
+                                        <p id="email">Email</p>
+                                    </div>
+                                    <div class="cell">
+                                        <p id="id">ID</p>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js"
+        integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
+
+    <script>
+
+const target = $('#reservation-cards')
+
+// const newCard
+// <div class="card" style="width: 300px;">
+//                     <div class="card-divider">
+//                         <h3>Table <span id="table-num">1</span></h3>
+//                     </div>
+//                     <div class="card-section">
+//                         <div class="grid-x">
+//                             <div class="cell">
+//                                 <h4 id="name">Customer Name</h4>
+//                             </div>
+//                             <div class="cell">
+//                                 <p>Phone: <span id="phone">num</span></p>
+//                                 <p>Email: <span id="email">email</span></p>
+//                                 <p>ID: <span id="id">id</span></p>
+
+//                             </div>
+
+//                         </div>
+//                     </div>
+//                 </div>
+
+    </script>
+</body>
+
+</html>

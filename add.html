@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+     <!-- Compressed CSS -->
+     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+   
+    <title>Restaurant</title>
+</head>
+<body>
+  <div class="hero-section">
+    <div class="hero-section">
+        <h1 class="text-center">Best Restaurant</h1>
+        <h5 class="text-center">Get in before we're at Capacity!</h5>
+        <div class="button-group align-center">
+            <a class="button" href="/">Home</a>
+            <a class="button" href="/view">Tables</a>
+        </div>
+    </div>
+</div>
+    <main>
+    <form>
+        <div class="grid-container">
+          <div class="grid-x grid-padding-x">
+            <div class="medium-6 cell">
+              <label>Name
+                <input type="text" placeholder="Customer name" id="name-input">
+              </label>
+            </div>
+            <div class="medium-6 cell">
+              <label>Phone
+                <input type="text" placeholder="Customer phonenumber" id="phone-input">
+              </label>
+            </div>
+            <div class="medium-6 cell">
+                <label>Email
+                  <input type="text" placeholder="Customer email" id="email-input">
+                </label>
+              </div>
+              <div class="medium-6 cell">
+                <label>id
+                  <input type="text" placeholder="Unique id" id="id-input">
+                </label>
+              </div>
+              <button type="button" class="button small medium-expanded" id="reserve-btn">Make reservation</button>
+            </div>
+        </div>
+      </form>
+    </main>
+
+    <script src="https://code.jquery.com/jquery.js"></script>
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+
+<script type="text/javascript">
+    /*Make Reservations */
+$("#reserve-btn").on("click", function(event) {
+  event.preventDefault();
+  console.log('heard button')
+  var newReservations = {
+    name: $("#name-input").val().trim(),
+    phone: $("#phone-input").val().trim(),
+    email: $("#email-input").val().trim(),
+    uniqueID: $("#id-input").val().trim()
+  };
+
+  $.post("/api/reservations", newReservations)
+    .then(function(data) {
+      console.log("add.html", data);
+      alert("Reservation Made");
+    });
+});
+    </script>
+
+  </body>
+</html>
