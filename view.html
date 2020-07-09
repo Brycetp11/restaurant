@@ -32,54 +32,14 @@
                 <h2>Here are the reservations for tonight!</h2>
             </div>
             <div class="cell" id="reservation-cards">
-                
+
             </div>
         </section>
         <section class="grid-x grid-padding-x">
             <div class="cell text-center">
                 <h2>Here is the wait list!</h2>
             </div>
-            <div class="cell">
-                <div class="card" style="width: 300px;">
-                    <div class="card-divider">
-                        <h3>Position <span id="table-num">1</span></h3>
-                    </div>
-                    <div class="card-section">
-                        <div class="grid-x">
-                            <div class="cell">
-                                <h4 id="name">Customer Name</h4>
-                            </div>
-                            <div class="cell-4">
-                                <div class="grid-x">
-                                    <div class="cell">
-                                        <p>Phone</p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>Email</p>
-                                    </div>
-                                    <div class="cell">
-                                        <p>ID</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                            <div class="cell-8">
-                                <div class="grid-x">
-                                    <div class="cell">
-                                        <p id="phone">Phone</p>
-                                    </div>
-                                    <div class="cell">
-                                        <p id="email">Email</p>
-                                    </div>
-                                    <div class="cell">
-                                        <p id="id">ID</p>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <div class="cell" id="waitlist-cards">
             </div>
         </section>
     </main>
@@ -93,29 +53,58 @@
 
 
     <script>
+        console.log('doing smth')
+        $.get('/api/reservations', (data) => {
+            console.log(data)
+            if (data) {
+                data.forEach((element, index) => {
+                    const target = $('#reservation-cards')
 
-const target = $('#reservation-cards')
+                    let card = $('<div class="card" style="width: 300px;">')
+                    let newCard = $('<div class="card-divider">')
+                    card.append(newCard)
+                    let heading = $('<h3>')
+                    newCard.append(heading)
+                    heading.text(`Table ${index+1}`)
+                    let cardSection = $('<div class="card-section">')
+                    card.append(cardSection)
+                    cardSection.append($('<h4 id="name">').text(`name: ${element.name}`))
+                    cardSection.append($('<p id="phone">').text(`phone: ${element.phone}`))
+                    cardSection.append($('<p id="email">').text(`email: ${element.email}`))
+                    cardSection.append($('<p id="id">').text(`id: ${element.id}`))
 
-// const newCard
-// <div class="card" style="width: 300px;">
-//                     <div class="card-divider">
-//                         <h3>Table <span id="table-num">1</span></h3>
-//                     </div>
-//                     <div class="card-section">
-//                         <div class="grid-x">
-//                             <div class="cell">
-//                                 <h4 id="name">Customer Name</h4>
-//                             </div>
-//                             <div class="cell">
-//                                 <p>Phone: <span id="phone">num</span></p>
-//                                 <p>Email: <span id="email">email</span></p>
-//                                 <p>ID: <span id="id">id</span></p>
+                    target.append(card)
+                });
+            } else {
 
-//                             </div>
+            }
+        })
 
-//                         </div>
-//                     </div>
-//                 </div>
+        $.get('/api/waitlist', (data) => {
+            console.log(data)
+            if (data) {
+                data.forEach((element, index) => {
+                    const target = $('#waitlist-cards')
+
+                    let card = $('<div class="card" style="width: 300px;">')
+                    let newCard = $('<div class="card-divider">')
+                    card.append(newCard)
+                    let heading = $('<h3>')
+                    newCard.append(heading)
+                    heading.text(`Table ${index+1}`)
+                    let cardSection = $('<div class="card-section">')
+                    card.append(cardSection)
+                    cardSection.append($('<h4 id="name">').text(`name: ${element.name}`))
+                    cardSection.append($('<p id="phone">').text(`phone: ${element.phone}`))
+                    cardSection.append($('<p id="email">').text(`email: ${element.email}`))
+                    cardSection.append($('<p id="id">').text(`id: ${element.id}`))
+
+                    target.append(card)
+                });
+            } else {
+
+            }
+        })
 
     </script>
 </body>
