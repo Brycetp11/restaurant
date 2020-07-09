@@ -13,35 +13,9 @@ app.use(express.json());
 
 
 // Customer Data
-const reservations = [
-    {
-        name: "maria",
-        phone: 5454333455,
-        email: "alkjflkj@ljkklj",
-        id: 3434
-    },
-    {
-        name: "Bryce",
-        phone: 5454333455,
-        email: "alkjflkj@ljkklj",
-        id: 356434
-    }
-]
+const reservations = [];
 
-const waitlist = [
-    {
-        name: "maria",
-        phone: 5454333455,
-        email: "alkjflkj@ljkklj",
-        id: 3434
-    },
-    {
-        name: "Bryce",
-        phone: 5454333455,
-        email: "alkjflkj@ljkklj",
-        id: 356434
-    }
-]
+const waitlist = [];
 
 //* Routes
 
@@ -72,7 +46,7 @@ app.get('/api/waitlist', (req, res)=>{
 // create new reservation
 app.post("/api/reservations",function(req, res){
     let newReservation = req.body;
-    if(reservations.length <=5){
+    if(reservations.length <5){
         reservations.push(newReservation);
     } 
     else {
