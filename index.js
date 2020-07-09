@@ -71,8 +71,13 @@ app.get('/api/waitlist', (req, res)=>{
 
 // create new reservation
 app.post("/api/reservations",function(req, res){
-    var newReservation = req.body;
-    reservations.push(newReservation);
+    let newReservation = req.body;
+    if(reservations.length <=5){
+        reservations.push(newReservation);
+    } 
+    else {
+        waitlist.push(newReservation)
+    }
     res.json(newReservation)
 })
 
