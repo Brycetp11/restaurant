@@ -10,6 +10,16 @@
     <title>Restaurant</title>
 </head>
 <body>
+  <div class="hero-section">
+    <div class="hero-section">
+        <h1 class="text-center">Best Restaurant</h1>
+        <h5 class="text-center">Get in before we're at Capacity!</h5>
+        <div class="button-group align-center">
+            <a class="button" href="/">Home</a>
+            <a class="button" href="/view">Tables</a>
+        </div>
+    </div>
+</div>
     <main>
     <form>
         <div class="grid-container">
@@ -39,8 +49,30 @@
         </div>
       </form>
     </main>
+
     <script src="https://code.jquery.com/jquery.js"></script>
     <!-- Compressed JavaScript -->
     <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
-</body>
+
+<script type="text/javascript">
+    /*Make Reservations */
+$("#reserve-btn").on("click", function(event) {
+  event.preventDefault();
+  console.log('heard button')
+  var newReservations = {
+    name: $("#name-input").val().trim(),
+    phone: $("#phone-input").val().trim(),
+    email: $("#email-input").val().trim(),
+    uniqueID: $("#id-input").val().trim()
+  };
+
+  $.post("/api/reservations", newReservations)
+    .then(function(data) {
+      console.log("add.html", data);
+      alert("Reservation Made");
+    });
+});
+    </script>
+
+  </body>
 </html>

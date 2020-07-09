@@ -82,10 +82,6 @@ app.post("/api/reservations",function(req, res){
 })
 
 
-
-
-
-
 // Starts server
 app.listen(PORT, function(){
     console.log("app is listening on port " + PORT);
