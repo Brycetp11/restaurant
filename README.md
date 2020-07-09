@@ -20,6 +20,8 @@ Create a basic server using Express.JS
 
 * Create a few array variables that will hold the data
 
+
+
 * Create a set of routes for getting and posting table data
 localhost:300/api/table
 
